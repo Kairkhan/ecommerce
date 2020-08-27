@@ -45,3 +45,11 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+a{
+  text-decoration:none;
+  color: #000;
+}
+a:hover{
+  color: #000;
+}
