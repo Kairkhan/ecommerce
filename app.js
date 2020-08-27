@@ -8,20 +8,38 @@ const app = express();
 
 const bodyParser = require('body-parser');
 app.set("view engine","ejs");
+app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'));
 
 
-const cards = [{title:"Washing machine",description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"},{title:"Washing machine",description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"},{title:"Washing machine",description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"}]
+const cards = [{title:"Washing machine",
+        description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry."},
+        {title:"TV",
+        description:"At nec cibo dolore honestatis."},
+        {title:"Fridge",
+        description:"Per zril temporibus in, duo nullam invidunt molestiae eu, te per nullam minimum."}]
 
+
+var card = "TV";
 app.get("/",function(req,res){
   res.render("home",{pageTitle:"Home",cards:cards});
 });
 
 
 app.get("/good",function(req,res){
-  res.render("good",{pageTitle:"good",goodName:cards[0].title,goodDescription:cards[0].description});
+  cards.forEach(function(element){
+    if(element.title === card){
+      card = element
+    }
+  });
+  res.render("good",{pageTitle:"Good",goodName:card.title,goodDescription:card.description});
 });
 
+
+app.post("/good",function(req,res){
+  card = req.body.card;
+  res.redirect("/good");
+});
 
 app.listen(3000,()=>{
   console.log("Server is running on port 3000");

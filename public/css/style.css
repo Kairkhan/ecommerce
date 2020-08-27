@@ -53,3 +53,8 @@ a{
 a:hover{
   color: #000;
 }
+
+
+.details-button{
+  margin-top: 10px;
+}
