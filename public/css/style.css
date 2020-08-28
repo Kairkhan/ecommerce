@@ -2,11 +2,10 @@ html {
   font-size: 14px;
 
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.sidebar{
+  font-family: 'Cantata One', serif;
 }
+
 
 .container {
   max-width: 960px;
@@ -40,7 +39,13 @@ html {
 }
 
 
-.card-text{
+.card-text-homepage{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-title-homepage{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -56,5 +61,24 @@ a:hover{
 
 
 .details-button{
+  margin-top: 10px;
+}
+
+
+.fa-icon{
+  margin-right: 5px;
+}
+
+
+.search-bar{
+  margin-bottom: 10px;
+}
+
+.none-heading{
+  color: red;
+  text-align: center;
+}
+
+.img-url{
   margin-top: 10px;
 }

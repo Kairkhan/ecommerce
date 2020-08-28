@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/Kairkhan/ecommerce/issues"
   },
-  "homepage": "https://github.com/Kairkhan/ecommerce#readme"
+  "homepage": "https://github.com/Kairkhan/ecommerce#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.2"
+  }
 }

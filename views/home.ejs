@@ -1,18 +1,33 @@
 <%- include("header")%>
+<nav class="navbar navbar-expand-lg navbar-light bg-light search-bar">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 <div class="row row-cols-1 row-cols-md-3">
   <%cards.forEach(function(card){%>
-  <form action="/good" method="post">
+  <%if(card.title){%>
+  <form action="/goodDetailed" method="post">
     <div class="col mb-4">
       <div class="card">
-        <img src="images/template.png" class="card-img-top" alt="images/template.png">
+        <img src="<%=card.images[0]%>" class="card-img-top" alt="images/template.png">
         <div class="card-body">
-          <h5 class="card-title"><%=card.title%></h5>
-          <p class="card-text"><%=card.description%></p>
+          <h5 class="card-title-homepage"><%=card.title%></h5>
+          <p class="card-text-homepage"><%=card.description%></p>
         </div>
       </div>
-      <button class="btn btn-sm btn-outline-dark spec-font details-button" type="submit" name="card" value ="<%=card.title%>"">More details</button>
+      <button class="btn btn-sm btn-outline-dark spec-font details-button" type="submit" name="card" value="<%=card.title%>">More details</button>
     </div>
   </form>
+  <%}else{%>
+    <h1 class= " none-heading">No goods here!!!</h1>
+        <%}%>
   <%})%>
-</div>
-<%-include("footer")%>
+    </div>
+    <%-include("footer")%>
