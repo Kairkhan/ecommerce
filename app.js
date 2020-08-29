@@ -30,6 +30,17 @@ var defaultCard = {title:"Timberland Boots",
   images:["https://images.timberland.com/is/image/TimberlandEU/10061713-hero?wid=720&hei=720&fit=constrain,1&qlt=85,1&op_usm=1,1,6,0"]
 };
 
+
+const personSchema = new mongoose.Schema({
+  username:String,
+  email:String,
+  password:String
+})
+
+
+const Person = mongoose.model("Person",personSchema);
+
+
 app.get("/",function(req,res){
   Good.find(function(err,products){
     res.render("home",{cards:products});
@@ -50,7 +61,6 @@ app.post("/goodDetailed",function(req,res){
       console.log(err);
     }else{
       defaultCard = result[0];
-      console.log(defaultCard);
       res.redirect("/good");
     }
   });
@@ -69,7 +79,6 @@ app.post("/add",function(req,res){
     images:[body.imageURL1,body.imageURL2,body.imageURL3]
   })
 
-
   good.save();
 
   res.redirect("/");
@@ -78,8 +87,28 @@ app.post("/add",function(req,res){
 
 app.get("/signup",function(req,res){
   res.render("signup");
-})
+});
 
+app.post("/signup",function(req,res){
+  const privateData = req.body;
+  if(privateData.password === privateData.password2){
+    const person  = new Person({
+      username:privateData.username,
+      email:privateData.email,
+      password:privateData.password
+    });
+    person.save();
+    res.redirect("/")
+  }else{
+    res.redirect("/signup");
+  }
+});
+
+
+
+app.get("/signin",function(req,res){
+  res.render("signin");
+});
 app.listen(3000,()=>{
   console.log("Server is running on port 3000");
 });
