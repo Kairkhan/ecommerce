@@ -2,6 +2,16 @@ html {
   font-size: 14px;
 
 }
+
+@media screen and (max-width: 600px) {
+  .sign-link{
+    margin-top: 10px;
+  }
+  .signup-btn{
+    margin-bottom: 10px;
+  }
+
+}
 .sidebar{
   font-family: 'Cantata One', serif;
 }
