@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 
-mongoose.connect('mongodb://localhost:27017/ecommerce', {useNewUrlParser: true,useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://admin-kaiyrkhan:test123@cluster0.wqqey.mongodb.net/ecommerce?retryWrites=true&w=majority', {useNewUrlParser: true,useUnifiedTopology: true});
 
 
 const bodyParser = require('body-parser');
