@@ -75,13 +75,11 @@ app.post("/add",function(req,res){
   res.redirect("/");
 });
 
+
+app.get("/signup",function(req,res){
+  res.render("signup");
+})
+
 app.listen(3000,()=>{
   console.log("Server is running on port 3000");
 });
-
-
-
-// { "_id" : ObjectId("5f4940114ee9a45273af916e"),
-// "title" : "Timberland Boots",
-// "description" : "In 1973, the small town of Newmarket in New Hampshire played host to the birth of an American legend.",
-//"image" : "https://images.timberland.com/is/image/TimberlandEU/10061713-hero?wid=720&hei=720&fit=constrain,1&qlt=85,1&op_usm=1,1,6,0", "__v" : 0 }
